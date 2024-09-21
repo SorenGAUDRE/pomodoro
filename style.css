@@ -65,7 +65,9 @@ h1 {
     text-align: center;
 }
 
-/* Style de l'horloge */
+
+
+
 .clock {
     position: relative;
     width: 200px;
@@ -84,18 +86,8 @@ h1 {
     fill: none;
 }
 
-.clock-face line {
-    stroke: #0a0707;
-    stroke-linecap: round;
-}
 
 
-.time-hand {
-    stroke: #ff3b3b;
-    stroke-width: 1;
-    transform-origin: 50% 50%;
-    animation: rotate-second 60s linear infinite;
-}
 
 /* Affichage du temps numérique */
 .time-display {
@@ -108,20 +100,6 @@ h1 {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
-@keyframes rotate-hour {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes rotate-minute {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes rotate-second {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
 
 /* Responsive */
 @media (max-width: 500px) {

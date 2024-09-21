@@ -11,7 +11,7 @@ function startTimer (){
     if(isPaused){
         if(timeLeft > 0 ){
             isPaused = false
-            setInterval(() => {
+            intervalId = setInterval(() => {
                 timerDisplay.innerHTML =  timeLeft.toString();
                 timeLeft--;
             }, 1000)
@@ -25,13 +25,28 @@ function startTimer (){
     }
 }
 
+function stopTimer(){
+    clearInterval(intervalId);
+}
+
 function pauseTimer(){
     if (isPaused){
+        stopTimer()
         startTimer();
     }else{
+        stopTimer();
         isPaused = true;
     }
 }
+
+function resetTimer(){
+    stopTimer()
+    timeLeft = 60 * 25
+    isPaused = true
+    timerDisplay.innerHTML =  timeLeft.toString()
+
+}
+
 
 startButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);

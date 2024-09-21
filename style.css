@@ -8,6 +8,16 @@ body {
     background-color: #f4f4f4;
 }
 
+.encadrement{ 
+    border: 1px solid black; 
+    padding: 5px; 
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+} 
+
 .container {
     text-align: center;
     background: #fff;

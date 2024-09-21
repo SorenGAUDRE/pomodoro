@@ -3,10 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>POMODORO</title>
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Chronomètre</h1>
+        <div class="clock-container">
+            <div class="clock">
+                <svg class="clock-face" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" stroke="#333" stroke-width="2" fill="none"/>
+                    <line x1="50" y1="50" x2="50" y2="15" class="time-hand"/>
+                    <circle cx="50" cy="50" r="2" fill="#333"/>
+                </svg>
+                <div class="time-display">00:00:00</div>
+            </div>
+        <div class="buttons">
+            <button id="start">Démarrer</button>
+            <button id="pause">Pause</button>
+            <button id="reset">Réinitialiser</button>
+        </div>
+    </div>
 </body>
 <script  defer src="script.js"></script>
 </html>

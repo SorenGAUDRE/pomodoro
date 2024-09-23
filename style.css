@@ -1,4 +1,5 @@
 body {
+    /* Center the content horizontally and vertically, apply a background and set full height */
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -10,6 +11,7 @@ body {
 }
 
 footer{
+    /* Center the footer content */
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -17,14 +19,16 @@ footer{
 }
 
 #progress-circle {
+    /* Apply a smooth transition for progress change and rotate the circle to start from the top */
     transition: stroke-dashoffset 1s linear;
-    transform: rotate(-90deg); /* Pour que la progression commence en haut */
-    transform-origin: 50% 50%; /* Centre de rotation au milieu du cercle */
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
 }
 
 
  
 .encadrement{ 
+    /* Style for the work/break labels with padding, border, and hover transition */
     border: 1px solid black; 
     padding: 5px; 
     margin: 5px;
@@ -35,6 +39,7 @@ footer{
 } 
 
 .container {
+    /* Style the main container with padding, shadow, and centered content */
     text-align: center;
     background: #fff;
     padding: 40px;
@@ -43,15 +48,18 @@ footer{
 }
 
 h1 {
+    /* Add margin to the title */
     margin-bottom: 20px;
 }
 
 #timer {
+    /* Style for the timer text */
     font-size: 48px;
     margin-bottom: 20px;
 }
 
 .buttons button {
+    /* Common button styling: size, padding, border, and hover effects */
     font-size: 18px;
     padding: 10px 20px;
     margin: 5px;
@@ -62,11 +70,13 @@ h1 {
 }
 
 #start {
+    /* Specific styling for the start button */
     background-color: #4CAF50;
     color: white;
 }
 
 #pause {
+    /* Specific styling for the pause button */
     background-color: #FF9800;
     color: white;
 }

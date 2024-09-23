@@ -5,43 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
+    <script src="https://kit.fontawesome.com/a73d8f4d22.js" crossorigin="anonymous"></script>
     <title>POMODORO</title>
 </head>
 <body>
-    <form id ="myForm">
-        <div class="setting">
-            <label for="number">Enter your work time: </label>
-            <input type="float" id="timeChanged" required  />
-          </div>
-          <div class="form-example">
-            <label for="number">Enter your break time: </label>
-            <input type="float"  id="breakChanged" required  />
-          </div>
-          <div class="form-example">
-            <input type="submit" value="valide"  />
-          </div>
-    </form>
-    <div class="container">
+    <main>
         <h1>POMODORO</h1>
-        <div class="clock-container">
-            <span class="encadrement" id="work">Travail</span>
-            <span class="encadrement" id="break">Pause</span>
-            <div class="clock">
-                <svg class="clock-face" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" stroke="#333" stroke-width="2" fill="none"/>
-                    <circle id="progress-circle" cx="50" cy="50" r="45" stroke="#4CAF50" stroke-width="4" fill="none" stroke-dasharray="282.6" stroke-dashoffset="282.6"/>
-                </svg>
-                <div id="time" class="time-display">25:00</div>
-            </div>     
-        <div class="buttons">
-            <button id="start">Démarrer</button>
-            <button id="pause">Pause</button>
-            <button id="reset">Réinitialiser</button>
+        <div class="container">
+            <div class="state-container">
+                <span class="encadrement" id="work">Travail</span>
+                <span class="encadrement" id="break">Pause</span>
+            </div>
+            <div class="clock-container">
+                <div class="clock">
+                    <svg class="clock-face" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="35" stroke="#f1f392" stroke-width="2" fill="none"/>
+                        <circle id="circle" cx="50" cy="50" r="45" stroke="#333" stroke-width="1" fill="none"/>
+                        <circle id="progress-circle" cx="50" cy="50" r="35" stroke="#c55546" stroke-width="3" fill="none" stroke-dasharray="282.6" stroke-dashoffset="282.6"/>
+                    </svg>
+                    <div id="time" class="time-display">25:00</div>
+                </div>     
+                <div class="buttons">
+                    <button id="start"><i class="fa-solid fa-play"></i></button>
+                    <button id="pause"><i class="fa-solid fa-pause"></i></button>
+                    <button id="reset"><i class="fa-solid fa-rotate-right"></i></button>
+                    <button id="setting"><i class="fa-solid fa-gear"></i></button>
+                </div>  
+            </div>
         </div>
-    </div>
-</div>
+
+        <!-- Fenêtre modale -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form id="myForm">
+                    <div class="form">
+                        <label for="number">Enter your work time: </label>
+                        <br/>
+                        <label for="number">Minutes : </label>
+                        <input type="float" id="timeChanged" required  />
+                        <label for="number">Seconds : </label>
+                        <input type="float" id="timeChanged" required  />
+                    </div>
+                    <div class="form-example">
+                        <label for="number">Enter your break time: </label>
+                        <input type="float" id="breakChanged" required  />
+                    </div>
+                    <div class="submit">
+                        <button type="submit" > <i class="fa-solid fa-check"></i> </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <small>Soren GAUDRE Baptiste CADIOU © BUT Informatique</small>
+    </footer>
 </body>
-<footer>
-    <p>Soren GAUDRE Baptiste CADIOU © BUT Informatique</p>
-</footer>
 </html>

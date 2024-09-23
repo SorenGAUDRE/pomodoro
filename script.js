@@ -2,9 +2,9 @@ let timer;
 let isPaused = true;
 let isWork = true;
 let isBreak = false;
-let workTime = 25; // Default work session duration (25 minutes)
+let workTime = 0.05; // Default work session duration (25 minutes)
 let breakTime = 5;  // Default break session duration (5 minutes)
-let timeLeft = workTime * 60; // Work session time in seconds
+let timeLeft = workTime * 60 ; // Work session time in seconds
 let initialTimeLeft = timeLeft; // Store initial time for progress calculations
 
 // DOM element references
@@ -18,8 +18,9 @@ var work = document.getElementById('work'); // Work label element
 var breaks = document.getElementById('break'); // Break label element
 
 // Initial styling for work session label
-work.style.backgroundColor = "#4CAF50";
-work.style.color = "white";
+work.style.color="#f1f392"
+breaks.style.color="white"
+
 
 // Set initial progress bar values
 progressCircle.style.strokeDasharray = circleCircumference;
@@ -50,10 +51,8 @@ function startTimer() {
                     initialTimeLeft = timeLeft;
                     isWork = false; // Toggle session state
                     isBreak = true;
-                    breaks.style.backgroundColor = "#4CAF50"; // Update break styling
-                    breaks.style.color = "white";
-                    work.style.backgroundColor = "";
-                    work.style.color = "black";
+                    breaks.style.color="#f1f392"
+                    work.style.color="white"
                     displayTime(timeLeft);
                 }
                 // If break session ends, switch back to work session
@@ -64,10 +63,8 @@ function startTimer() {
                     initialTimeLeft = timeLeft;
                     isWork = true;
                     isBreak = false;
-                    work.style.backgroundColor = "#4CAF50"; // Update work styling
-                    work.style.color = "white";
-                    breaks.style.backgroundColor = "";
-                    breaks.style.color = "black";
+                    work.style.color="#f1f392"
+                    breaks.style.color="white"
                     displayTime(timeLeft);
                 }
             }, 1000); // Update every second
@@ -105,13 +102,11 @@ function pauseTimer() {
 // Function to reset the timer
 function resetTimer() {
     stopTimer(); // Stop the timer
-    timeLeft = 60 * workTime; // Reset time to the default work time
+    timeLeft = 60 * workTime ; // Reset time to the default work time
     initialTimeLeft = timeLeft; // Update initial time
     isPaused = true; // Pause the timer
-    work.style.backgroundColor = "#4CAF50"; // Update work styling
-    work.style.color = "white";
-    breaks.style.backgroundColor = "";
-    breaks.style.color = "black";
+    work.style.color="#f1f392"
+    breaks.style.color="white"
     displayTime(timeLeft); // Reset the displayed time
     progressCircle.style.strokeDasharray = circleCircumference; // Reset progress bar
     progressCircle.style.strokeDashoffset = circleCircumference;
@@ -121,6 +116,34 @@ function resetTimer() {
 startButton.addEventListener('click', startTimer); // Start button
 pauseButton.addEventListener('click', pauseTimer); // Pause button
 resetButton.addEventListener('click', resetTimer); // Reset button
+
+let modal = document.getElementById("myModal");
+let btn = document.getElementById("setting");
+let span = document.getElementsByClassName("close")[0];
+
+// Lorsque l'utilisateur clique sur le bouton "setting", ouvrir la fenêtre modale
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// Lorsque l'utilisateur clique sur le bouton de fermeture (×), fermer la fenêtre modale
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Lorsque l'utilisateur clique en dehors de la fenêtre modale, fermer la fenêtre modale
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Lorsque le formulaire est soumis, fermer la fenêtre modale
+document.getElementById("myForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Empêche l'envoi réel du formulaire pour démo
+    modal.style.display = "none";
+    // Vous pouvez ajouter ici du code pour traiter le formulaire si nécessaire
+});
 
 // Event listener for form submission to update work/break times
 document.getElementById("myForm").addEventListener("submit", function(event) {

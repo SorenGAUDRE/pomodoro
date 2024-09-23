@@ -15,6 +15,15 @@ footer{
     justify-content: center;
     align-items: center;
 }
+
+#progress-circle {
+    transition: stroke-dashoffset 1s linear;
+    transform: rotate(-90deg); /* Pour que la progression commence en haut */
+    transform-origin: 50% 50%; /* Centre de rotation au milieu du cercle */
+}
+
+
+ 
 .encadrement{ 
     border: 1px solid black; 
     padding: 5px; 
@@ -95,12 +104,6 @@ h1 {
 .clock-face {
     width: 100%;
     height: 100%;
-}
-
-.clock-face circle {
-    stroke: #0c0b0b;
-    stroke-width: 2;
-    fill: none;
 }
 
 

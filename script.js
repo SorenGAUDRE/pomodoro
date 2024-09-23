@@ -1,9 +1,13 @@
 let timer;
-let timeLeft = 0.05 * 60;
 let isPaused = true;
 let isWork= true;
 let isBreak= false;
-let initialTimeLeft = timeLeft; // Garde la valeur initiale pour calculer la progression
+let workTime = 25;
+let breakTime= 5;
+let timeLeft = workTime* 60;
+let initialTimeLeft = timeLeft;
+
+
 
 const progressCircle = document.getElementById('progress-circle');
 const circleCircumference = 2 * Math.PI * 45; // Périmètre du cercle (r = 45)
@@ -36,7 +40,7 @@ function startTimer (){
                 if (timeLeft<-1 && isWork == true){
                     progressCircle.style.strokeDasharray = circleCircumference;
                     progressCircle.style.strokeDashoffset = circleCircumference;
-                    timeLeft = 5 * 60 ;
+                    timeLeft = breakTime * 60 ;
                     initialTimeLeft = timeLeft;
                     isWork=false;
                     isBreak=true;
@@ -48,7 +52,7 @@ function startTimer (){
                 }else if (timeLeft<-1 && isBreak == true){
                     progressCircle.style.strokeDasharray = circleCircumference;
                     progressCircle.style.strokeDashoffset = circleCircumference;
-                    timeLeft = 25 * 60 ;
+                    timeLeft = workTime * 60 ;
                     initialTimeLeft = timeLeft;
                     isWork=true;
                     isBreak=false;
@@ -91,7 +95,7 @@ function pauseTimer(){
 
 function resetTimer(){
     stopTimer()
-    timeLeft = 60 * 25
+    timeLeft = 60 * workTime
     initialTimeLeft=timeLeft
     isPaused = true
     work.style.backgroundColor="#4CAF50";
@@ -106,4 +110,11 @@ function resetTimer(){
 startButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
 resetButton.addEventListener('click', resetTimer);
+document.getElementById("myForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    workTime= document.getElementById('timeChanged').value
+    breakTime = document.getElementById('breakChanged').value
+    startTimer()
+    resetTimer()
+;})
 

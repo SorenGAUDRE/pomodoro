@@ -4,7 +4,7 @@ let isWork = true;
 let isBreak = false;
 let workTime = 0.05; // Default work session duration (25 minutes)
 let breakTime = 5;  // Default break session duration (5 minutes)
-let timeLeft = workTime * 60 ; // Work session time in seconds
+let timeLeft = workTime * 60  ; // Work session time in seconds
 let initialTimeLeft = timeLeft; // Store initial time for progress calculations
 
 // DOM element references
@@ -16,7 +16,6 @@ const pauseButton = document.getElementById('pause'); // Pause button
 const resetButton = document.getElementById('reset'); // Reset button
 var work = document.getElementById('work'); // Work label element
 var breaks = document.getElementById('break'); // Break label element
-
 // Initial styling for work session label
 work.style.color="#f1f392"
 breaks.style.color="white"
@@ -47,7 +46,7 @@ function startTimer() {
                 if (timeLeft < -1 && isWork == true) {
                     progressCircle.style.strokeDasharray = circleCircumference; // Reset progress
                     progressCircle.style.strokeDashoffset = circleCircumference;
-                    timeLeft = breakTime * 60; // Set break time in seconds
+                    timeLeft = breakTime * 60 ; // Set break time in seconds
                     initialTimeLeft = timeLeft;
                     isWork = false; // Toggle session state
                     isBreak = true;
@@ -102,7 +101,8 @@ function pauseTimer() {
 // Function to reset the timer
 function resetTimer() {
     stopTimer(); // Stop the timer
-    timeLeft = 60 * workTime ; // Reset time to the default work time
+    console.log(workTime)
+    timeLeft = (60 * workTime) ; // Reset time to the default work time
     initialTimeLeft = timeLeft; // Update initial time
     isPaused = true; // Pause the timer
     work.style.color="#f1f392"
@@ -142,14 +142,13 @@ window.onclick = function(event) {
 document.getElementById("myForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Empêche l'envoi réel du formulaire pour démo
     modal.style.display = "none";
-    // Vous pouvez ajouter ici du code pour traiter le formulaire si nécessaire
-});
-
-// Event listener for form submission to update work/break times
-document.getElementById("myForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent the form from submitting and refreshing the page
-    workTime = document.getElementById('timeChanged').value; // Update work time
-    breakTime = document.getElementById('breakChanged').value; // Update break time
-    startTimer(); // Start the timer with new values
-    resetTimer(); // Reset the timer to new work/break durations
+    let workmin= document.getElementById('workmin').value;
+    let worksec= document.getElementById('worksec').value;
+    let breakmin= document.getElementById('breakmin').value;
+    let breaksec= document.getElementById('breaksec').value;
+    //console.log(workmin)
+    workTime=parseInt(workmin) + (parseInt(worksec)/60)
+    breakTime=parseInt(breakmin) + (parseInt(breaksec)/60)
+    startTimer();
+    resetTimer();
 });

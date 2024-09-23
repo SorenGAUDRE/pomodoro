@@ -83,6 +83,9 @@ h1 {
     font-size: 7em;
 }
 
+.input{
+    width: 45px;
+}
 /* Timer Display */
 #timer {
     font-size: 48px;

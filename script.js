@@ -1,5 +1,5 @@
 let timer;
-let timeLeft = 0.03 * 60;
+let timeLeft = 0.05 * 60;
 let isPaused = true;
 let isWork= true;
 let isBreak= false;
@@ -12,41 +12,51 @@ var work = document.getElementById('work');
 var breaks = document.getElementById('break');
 
 work.style.backgroundColor="#4CAF50";
+work.style.color="white";
 
 function startTimer (){
     if(isPaused){
         if(timeLeft > 0 ){
             isPaused = false
             intervalId = setInterval(() => {
-                let minutes = parseInt(timeLeft / 60, 10)
-                let secondes = parseInt(timeLeft % 60, 10)
-                minutes = minutes < 10 ? "0" + minutes : minutes
-                secondes = secondes < 10 ? "0" + secondes : secondes
-                timerDisplay.innerText = minutes + ":" + secondes
+                displayTime(timeLeft);
                 timeLeft--;
-                if (timeLeft<=0 && isWork == true){
+                if (timeLeft<-1 && isWork == true){
                     timeLeft = 5 * 60 ;
                     isWork=false;
                     isBreak=true;
                     breaks.style.backgroundColor="#4CAF50";
+                    breaks.style.color="white";
                     work.style.backgroundColor="";
-                    alert('passage en pause')
-                }else if (timeLeft<=0 && isBreak == true){
+                    work.style.color="black";
+                    pauseTimer();
+                    displayTime(timeLeft);
+                }else if (timeLeft<-1 && isBreak == true){
                     timeLeft = 25 * 60 ;
-                    isWork= true;
+                    isWork=true;
                     isBreak=false;
                     work.style.backgroundColor="#4CAF50";
+                    work.style.color="white";
                     breaks.style.backgroundColor="";
-                    alert('passage au travail')
+                    breaks.style.color="black";
+                    displayTime(timeLeft);
+                    pauseTimer();
                 }
             }, 1000)
         }
     }
     else{
-        alert('le chrono est deja en cours')
+        alert('le chrono est deja en cours');
     }
 }
 
+function displayTime(timeLeft){
+    let minutes = parseInt(timeLeft / 60, 10)
+    let secondes = parseInt(timeLeft % 60, 10)
+    minutes = minutes < 10 ? "0" + minutes : minutes
+    secondes = secondes < 10 ? "0" + secondes : secondes
+    timerDisplay.innerText = minutes + ":" + secondes
+}
 
 
 function stopTimer(){
@@ -68,13 +78,10 @@ function resetTimer(){
     timeLeft = 60 * 25
     isPaused = true
     work.style.backgroundColor="#4CAF50";
+    work.style.color="white";
     breaks.style.backgroundColor="";
-    let minutes = parseInt(timeLeft / 60, 10)
-    let secondes = parseInt(timeLeft % 60, 10)
-    minutes = minutes < 10 ? "0" + minutes : minutes
-    secondes = secondes < 10 ? "0" + secondes : secondes
-    timerDisplay.innerText = minutes + ":" + secondes
-
+    breaks.style.color="black";
+    displayTime(timeLeft);
 }
 
 

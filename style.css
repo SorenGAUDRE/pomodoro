@@ -6,8 +6,15 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #f4f4f4;
+    flex-direction: column;
 }
 
+footer{
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .encadrement{ 
     border: 1px solid black; 
     padding: 5px; 

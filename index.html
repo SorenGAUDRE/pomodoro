@@ -26,10 +26,10 @@
                     <div id="time" class="time-display">25:00</div>
                 </div>     
                 <div class="buttons">
-                    <button id="start"><i class="fa-solid fa-play"></i></button>
-                    <button id="pause"><i class="fa-solid fa-pause"></i></button>
-                    <button id="reset"><i class="fa-solid fa-rotate-right"></i></button>
-                    <button id="setting"><i class="fa-solid fa-gear"></i></button>
+                    <button id="start"><em class="fa-solid fa-play"></em></button>
+                    <button id="pause"><em class="fa-solid fa-pause"></em></button>
+                    <button id="reset"><em class="fa-solid fa-rotate-right"></em></button>
+                    <button id="setting"><em class="fa-solid fa-gear"></em></button>
                 </div>  
             </div>
         </div>
@@ -40,23 +40,23 @@
                 <span class="close">&times;</span>
                 <form id="myForm">
                     <div class="form">
-                        <label for="number">Enter your work time: </label>
-                        <br/>
-                        <label for="number">Minutes : </label>
-                        <input type="number" id="workmin" class="input" required min="0" max="59" value="25"/>
-                        <label for="number">Seconds : </label>
-                        <input type="number" id="worksec" class="input" required min="0" max="59" value="0"/>
+                        <label>Enter your work time:</label>
+                        <br>
+                        <label for="workmin">Minutes:</label>
+                        <input type="number" id="workmin" class="input" required min="0" max="59" value="25">
+                        <label for="worksec">Seconds:</label>
+                        <input type="number" id="worksec" class="input" required min="0" max="59" value="0">
                     </div>
                     <div class="form-example">
-                        <label for="number">Enter your break time: </label>
-                        <br/>
-                        <label for="number">Minutes : </label>
-                        <input type="number" id="breakmin" class="input" required min="0" max="59" value="5"/>
-                        <label for="number">Seconds : </label>
-                        <input type="number" id="breaksec" class="input" required min="0" max="59" value="0"/>
+                        <label>Enter your break time:</label>
+                        <br>
+                        <label for="breakmin">Minutes:</label>
+                        <input type="number" id="breakmin" class="input" required min="0" max="59" value="5">
+                        <label for="breaksec">Seconds:</label>
+                        <input type="number" id="breaksec" class="input" required min="0" max="59" value="0">
                     </div>
                     <div class="submit">
-                        <button type="submit" > <i class="fa-solid fa-check"></i> </button>
+                        <button type="submit"><em class="fa-solid fa-check"></em></button>
                     </div>
                 </form>
             </div>

@@ -135,10 +135,6 @@ label {
     font-weight: bold;
 }
 
-#circle {
-    text-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.37); /* Réduction de l'ombre du texte */
-}
-
 .close:hover,
 .close:focus {
     color: black;

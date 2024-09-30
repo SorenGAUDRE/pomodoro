@@ -9,7 +9,7 @@ let initialTimeLeft = timeLeft; // Store initial time for progress calculations
 
 // DOM element references
 const progressCircle = document.getElementById('progress-circle'); // Circular progress bar
-const circleCircumference = 2 * Math.PI * 45; // Circumference of the circle (with radius 45)
+const circleCircumference = 2 * Math.PI*35; // Circumference of the circle (with radius 45)
 const timerDisplay = document.getElementById('time'); // Time display element
 const startButton = document.getElementById('start'); // Start button
 const pauseButton = document.getElementById('pause'); // Pause button
@@ -37,9 +37,9 @@ function startTimer() {
     if (isPaused) {
         if (timeLeft > 0) {
             isPaused = false; // Unpause the timer
-            intervalId = setInterval(() => { // Start counting down
-                displayTime(timeLeft); // Display the current time
+            intervalId = setInterval(() => { // Start counting down // Display the current time
                 updateProgress(); // Update progress bar
+                displayTime(timeLeft);
                 timeLeft--; // Decrease time by 1 second
                 
                 // If work session ends, switch to break session

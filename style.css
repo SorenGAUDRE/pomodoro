@@ -4,24 +4,36 @@ body {
     box-sizing: border-box; 
     margin: 0;            
     position: absolute;
+    overflow: hidden; /* Empêcher le défilement */
 }
+
 main {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Use min-height instead of height to allow the footer to stay at the bottom */
+    min-height: 100vh;
     margin: 0;
     background-color: #c55546;
     flex-direction: column;
-    padding: 20px; /* Add padding for small screens */
+    padding: 10px; /* Réduction du padding */
 }
 
 .encadrement {
     text-align: center;
-    font-size: 2.5em;
+    font-size: 2em;
 }
 
+h1 {
+    text-align: center;
+    margin-top: 0; /* Retirer la marge négative */
+    margin-bottom: 15px; /* Réduire l'espacement sous le titre */
+    font-size: 5em; 
+    color: #fff;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* Style de la fenêtre modale */
 .modal {
     display: none; 
     position: fixed;
@@ -29,30 +41,102 @@ main {
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
-    overflow: auto;
+    height: 100%;   
     background-color: rgba(0, 0, 0, 0.5); 
 }
 
+
+
+/* Style pour les labels et inputs */
+.form {
+    display: flex;
+    flex-direction: column; /* Empiler les labels et inputs verticalement */
+    margin-bottom: 10px; /* Espacement entre chaque groupe label/input */
+}
+
+.form-example {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style des labels */
+label {
+    color: #f1f392; /* Couleur jaune clair pour le label */
+    font-size: 1.2em; /* Taille de police */
+    font-weight: bold; /* Gras pour plus de lisibilité */
+    margin-bottom: 5px; /* Espacement entre le label et l'input */
+}
+
+/* Style des inputs */
+.input {
+    background-color: #c55546; /* Fond de la même couleur que le site */
+    border: none; /* Supprimer les bordures par défaut */
+    border-bottom: 2px solid #f1f392; /* Ajouter une bordure inférieure */
+    color: white; /* Texte blanc pour contraste */
+    font-size: 1.2em; /* Taille de police */
+    padding: 5px; /* Padding autour du texte */
+    text-align: center; /* Centrer le texte */
+    margin-bottom: 15px; /* Espacement entre les inputs */
+    width: 100%; /* S'assurer que l'input prend toute la largeur disponible */
+}
+
+.input:focus {
+    outline: none; /* Retirer l'effet par défaut lors du focus */
+    border-bottom: 2px solid white; /* Bordure blanche quand actif */
+}
+
+/* Positionner le bouton dans la même box, en bas à droite */
+.submit {
+    display: flex;
+    justify-content: flex-end; /* Aligner à droite */
+}
+
+.submit button {
+    background-color: #f1f392; /* Couleur de fond jaune clair */
+    color: #c55546; /* Texte rouge pour contraster */
+    font-size: 1.2em; /* Taille de police */
+    padding: 10px 20px; /* Padding pour le bouton */
+    border: none; /* Retirer les bordures */
+    border-radius: 5px; /* Coins légèrement arrondis */
+    cursor: pointer; /* Curseur pointer sur hover */
+    transition: background-color 0.3s ease; /* Transition fluide au hover */
+}
+
+.submit button:hover {
+    background-color: #ffffff; /* Fond blanc au survol */
+    color: #c55546; /* Garde le texte rouge */
+    opacity: 0.9; /* Effet de transparence au survol */
+}
+
+/* Style de la fenêtre modale */
 .modal-content {
     background-color: #c55546;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 500px;
+    max-width: 400px;
     border-radius: 10px;
+    position: relative; /* Permet de positionner des éléments comme le bouton */
 }
 
+/* Position absolue pour le bouton en bas à droite */
+.submit {
+    bottom: 20px;
+    right: 20px;
+}
+
+
 .close {
-    color: #aaa;
+    color: grey;
     float: right;
-    font-size: 28px;
+    font-size: 24px; /* Réduction de la taille de police */
     font-weight: bold;
 }
 
 #circle {
-    text-shadow: 0 12px 32px 0 rgba(0, 0, 0, 0.37);
+    text-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.37); /* Réduction de l'ombre du texte */
 }
 
 .close:hover,
@@ -64,31 +148,20 @@ main {
 
 .state-container {
     text-align: center;
-    margin: 5%;
+    margin: 4%;
     border-radius: 20px;
-    box-shadow: 0 12px 32px 0 rgba(0, 0, 0, 0.37);
-    padding: 5%;
+    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.37); /* Réduction de l'ombre */
+    padding: 4%;
 }
 
 #work,
 #break {
-    margin: 5%;
+    margin: 4%;
 }
 
-/* Header */
-h1 {
-    text-align: center;
-    margin-top: -150px;
-    margin-bottom: -5px;
-    font-size: 7em;
-}
-
-.input{
-    width: 45px;
-}
 /* Timer Display */
 #timer {
-    font-size: 48px;
+    font-size: 36px; /* Réduction de la taille du texte du timer */
 }
 
 /* Progress Circle */
@@ -98,12 +171,12 @@ h1 {
     transform-origin: 50% 50%;
 }
 
-/* Clock */
+/* Horloge */
 .clock {
     position: relative;
-    width: 500px;
-    height: 500px;
-    margin: 0 auto 20px;
+    width: 400px; /* Réduction de la taille de l'horloge */
+    height: 400px;
+    margin: 0 auto 15px;
 }
 
 .clock-face {
@@ -111,23 +184,22 @@ h1 {
     height: 100%;
 }
 
-/* Time Display */
+/* Affichage du temps */
 .time-display {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 5em;
+    font-size: 4em; /* Réduction de la taille de l'affichage du temps */
     color: #fff;
-    text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
 }
 
-/* Buttons */
+/* Boutons */
 .buttons button {
-    font-size: 28px;
-    padding: 10px 20px;
-    margin: 20px;
-    margin-bottom: -50px;
+    font-size: 24px; 
+    padding: 8px 16px; /* Ajustement de l'espacement des boutons */
+    margin: 15px; 
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -162,60 +234,37 @@ h1 {
     opacity: 0.9;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 5px;
-    background-color: #abbaba;
-    color: #000;
-    width: 100%; 
-    box-sizing: border-box;
-    margin: 0;
-    position: absolute; 
-    bottom: 0;
-    left: 0;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     main {
-        padding: 10px; /* Increase padding for medium screens */
+        padding: 10px;
     }
     
     h1 {
-        font-size: 5em; /* Adjust header size */
+        font-size: 4em; /* Ajustement de la taille du titre */
     }
 
     .encadrement {
-        font-size: 2em;
+        font-size: 1.8em;
     }
 
     .clock {
-        width: 300px; /* Reduce size of the clock for medium screens */
-        height: 300px;
+        width: 250px; /* Taille de l'horloge réduite pour les petits écrans */
+        height: 250px;
     }
 
     .time-display {
-        font-size: 4em; /* Adjust the size of the time display */
-    }
-
-    #timer {
-        font-size: 36px; /* Reduce the timer font size */
+        font-size: 3em;
     }
 
     .buttons button {
-        font-size: 24px; /* Reduce button font size */
-        margin: 10px;
+        font-size: 20px;
     }
 }
 
 @media (max-width: 500px) {
-    main {
-        padding: 5px; /* Extra padding for smaller screens */
-    }
-
     h1 {
-        font-size: 3em; /* Further reduce header size */
+        font-size: 3em; 
     }
 
     .encadrement {
@@ -223,49 +272,16 @@ footer {
     }
 
     .clock {
-        width: 250px; 
-        height: 250px;
-    }
-
-    .time-display {
-        font-size: 3em; 
-    }
-
-    #timer {
-        font-size: 24px; 
-    }
-
-    .buttons button {
-        font-size: 18px; 
-        margin: 5px;
-        padding: 8px 16px;
-    }
-}
-
-/* Extra small devices (phones, less than 400px) */
-@media (max-width: 400px) {
-    .clock {
-        width: 200px; 
+        width: 200px;
         height: 200px;
     }
 
     .time-display {
-        font-size: 2.5em; 
+        font-size: 2.5em;
     }
 
     .buttons button {
-        font-size: 16px;
-        padding: 6px 12px;
-    }
-
-    #timer {
-        font-size: 20px; 
+        font-size: 18px;
+        padding: 8px;
     }
 }
-
-@media (max-width:350px){
-    footer {
-        display: none;
-    }
-}
-    

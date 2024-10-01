@@ -1,46 +1,54 @@
-Pomodoro projet réalisé par Soren GAUDRE et Baptiste Cadiou
+# POMODORO Timer par Cadiou Baptiste et Gaudre Soren
 
-# Pomodoro Timer
+Une application simple de **minuterie Pomodoro** créée avec **HTML**, **CSS**, et **JavaScript** pour aider à organiser les sessions de travail et de pause.
 
-This is a **Pomodoro Timer** web application, which helps users manage their work and break intervals efficiently using the Pomodoro Technique. The application is fully customizable and saves the user's preferences (work and break durations) using **Local Storage**, so these settings persist across sessions.
-
-## Table of Contents
-
-- [Features](#features)
-- [Demo](#demo)
+## Table des matières
+- [Fonctionnalités](#fonctionnalités)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Accessibility](#accessibility)
-- [Technologies Used](#technologies-used)
-- [Code Explanation](#code-explanation)
-  - [index.html](#indexhtml)
-  - [style.css](#stylecss)
-  - [script.js](#scriptjs)
-  - [Local Storage](#local-storage)
-- [License](#license)
+- [Utilisation](#utilisation)
+- [Technologies](#technologies)
+- [Contribuer](#contribuer)
+- [Licence](#licence)
 
-## Features
+## Fonctionnalités
 
-- **Start, Pause, and Reset functionality** to control the timer.
-- **Customizable work and break durations** through a settings modal.
-- **Progress bar** that visually shows the remaining time in the session.
-- **Local Storage** to save the user's preferences (work and break durations).
-- **Accessible for screen readers**, using ARIA roles and attributes for a better user experience.
-- **Responsive design** that adapts to different screen sizes, including mobile devices.
-
-## Demo
-
-You can try out the project by simply cloning the repository and running the project locally.
-
-### Example of Timer UI:
-
-![Pomodoro Timer Screenshot](#) <!-- (Insert image URL if available) -->
+- **Sessions de Travail et de Pause** : Passe automatiquement du travail à la pause après un intervalle défini.
+- **Contrôle de la minuterie** : Possibilité de démarrer, mettre en pause et réinitialiser le minuteur.
+- **Personnalisation des temps** : Ajustez la durée des sessions de travail et des pauses via un menu de paramètres.
+- **Progression visuelle** : Un cercle de progression montre visuellement l'avancement du temps.
+- **Sauvegarde locale** : Les paramètres sont enregistrés dans le `localStorage` pour être conservés après actualisation de la page.
 
 ## Installation
 
-To run this project locally, follow these steps:
+1. Clonez le dépôt sur votre machine locale en utilisant la commande suivante :
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/pomodoro-timer.git
+    ```bash
+    https://github.com/SorenGAUDRE/pomodoro.git
+    ```
 
+2. Ouvrez le fichier `index.html` dans votre navigateur pour commencer à utiliser la minuterie.
+
+## Utilisation
+
+1. **Démarrer la minuterie** : Cliquez sur le bouton `Start` pour lancer la session de travail.
+2. **Pause / Reprise** : Utilisez le bouton `Pause` pour interrompre la session et `Start` pour la reprendre.
+3. **Réinitialiser** : Cliquez sur `Reset` pour réinitialiser la session en cours.
+4. **Personnaliser les durées** :
+   - Cliquez sur l'icône d'engrenage `⚙` pour ouvrir les paramètres.
+   - Ajustez la durée des sessions de travail et de pause, puis cliquez sur le bouton de validation pour sauvegarder.
+5. **Progression** : Observez le cercle autour de la minuterie pour voir l'avancement de la session.
+
+## Technologies
+
+- **HTML5** : Structure de la page et éléments ARIA pour une accessibilité renforcée.
+- **CSS3** : Styles personnalisés pour l'interface utilisateur.
+- **JavaScript (ES6)** : Gestion de la logique du minuteur, des interactions utilisateurs, et de la sauvegarde des paramètres dans le `localStorage`.
+
+## Structure du projet
+
+```bash
+.
+├── index.html       # Fichier HTML principal
+├── style.css        # Fichier CSS pour le style de la minuterie
+├── script.js        # Fichier JavaScript pour la logique du minuteur
+└── README.md        # Documentation du projet

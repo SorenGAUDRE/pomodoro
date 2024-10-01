@@ -166,6 +166,5 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     localStorage.setItem('monTemps', workTime)
     breakTime=parseInt(breakmin) + (parseInt(breaksec)/60)
     localStorage.setItem('monTempsPause', breakTime)
-    startTimer();
     resetTimer();
 });

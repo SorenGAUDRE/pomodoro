@@ -11,6 +11,15 @@ let initialTimeLeft = timeLeft; // Store initial time for progress calculations
 const progressCircle = document.getElementById('progress-circle'); // Circular progress bar
 const circleCircumference = 2 * Math.PI*35; // Circumference of the circle (with radius 45)
 const timerDisplay = document.getElementById('time'); // Time display element
+if (localStorage.getItem("monTemps") != null){
+    workTime = localStorage.getItem("monTemps");
+    timeLeft = workTime * 60 
+    initialTimeLeft =timeLeft ;
+}
+if (localStorage.getItem("monTempsPause") != null){
+    breakTime = localStorage.getItem("monTempsPause");
+}
+displayTime(timeLeft)
 const startButton = document.getElementById('start'); // Start button
 const pauseButton = document.getElementById('pause'); // Pause button
 const resetButton = document.getElementById('reset'); // Reset button
@@ -102,6 +111,12 @@ function pauseTimer() {
 function resetTimer() {
     stopTimer(); // Stop the timer
     console.log(workTime)
+    if (localStorage.getItem("monTemps") != null){
+        workTime = localStorage.getItem("monTemps");
+    }
+    if (localStorage.getItem("monTempsPause") != null){
+        breakTime = localStorage.getItem("monTempsPause");
+    }
     timeLeft = (60 * workTime) ; // Reset time to the default work time
     initialTimeLeft = timeLeft; // Update initial time
     isPaused = true; // Pause the timer
@@ -148,7 +163,9 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     let breaksec= document.getElementById('breaksec').value;
     //console.log(workmin)
     workTime=parseInt(workmin) + (parseInt(worksec)/60)
+    localStorage.setItem('monTemps', workTime)
     breakTime=parseInt(breakmin) + (parseInt(breaksec)/60)
+    localStorage.setItem('monTempsPause', breakTime)
     startTimer();
     resetTimer();
 });

@@ -6,29 +6,35 @@
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
     <script src="https://kit.fontawesome.com/a73d8f4d22.js" crossorigin="anonymous"></script>
-    <title>POMODORO</title>
+    <title>Pomodoro Timer</title>
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
 </head>
 <body>
-
     <main id="main-content">
         <h1>POMODORO</h1>
-        
         <div class="container">
+            <!-- Conteneur pour l'état (travail ou pause) -->
             <div class="state-container" role="region" aria-labelledby="work break">
                 <span class="encadrement" id="work">Travail</span>
                 <span class="encadrement" id="break">Pause</span>
             </div>
 
+            <!-- Conteneur de l'horloge avec SVG pour la barre de progression -->
             <div class="clock-container">
                 <div class="clock" role="timer" aria-live="polite" aria-label="Pomodoro Timer">
                     <svg class="clock-face" viewBox="0 0 100 100" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" aria-label="Timer Progress">
+                        <!-- Cercle de fond pour l'affichage de l'horloge -->
                         <circle cx="50" cy="50" r="35" stroke="#f1f392" stroke-width="2" fill="none"/>
+                        <!-- Cercle statique pour délimiter l'affichage de l'horloge -->
                         <circle id="circle" cx="50" cy="50" r="45" stroke="#333" stroke-width="1" fill="none"/>
+                        <!-- Barre de progression dynamique pour le temps restant -->
                         <circle id="progress-circle" cx="50" cy="50" r="35" stroke="#c55546" stroke-width="3" fill="none" stroke-dasharray="282.6" stroke-dashoffset="282.6"/>
                     </svg>
+                    <!-- Élément d'affichage du temps restant -->
                     <div id="time" class="time-display" aria-live="polite"></div>
                 </div>
                 
+                <!-- Boutons de contrôle pour démarrer, mettre en pause et réinitialiser le minuteur -->
                 <div class="buttons" role="toolbar" aria-label="Timer controls">
                     <button aria-label="Start Timer" id="start"><em class="fa-solid fa-play"></em></button>
                     <button aria-label="Pause Timer" id="pause"><em class="fa-solid fa-pause"></em></button>
@@ -38,13 +44,16 @@
             </div>
         </div>
 
-        <!-- Fenêtre modale with ARIA role and attributes -->
+        <!-- Fenêtre modale pour ajuster les paramètres -->
         <div id="myModal" class="modal" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-description">
             <div class="modal-content">
+                <!-- Bouton pour fermer la fenêtre modale -->
                 <span class="close" aria-label="Close">&times;</span>
+                <!-- Formulaire de configuration pour définir les temps de travail et de pause -->
                 <form id="myForm" aria-label="Settings Form">
-                    <h2 id="modal-title" style="display:none;">Settings</h2> <!-- Hidden heading for screen readers -->
+                    <h2 id="modal-title" style="display:none;">Settings</h2> <!-- Titre caché pour les lecteurs d'écran -->
                     <div id="modal-description" class="form">
+                        <!-- Section pour entrer le temps de travail -->
                         <label>Enter your work time:</label>
                         <br>
                         <label for="workmin">Minutes:</label>
@@ -53,6 +62,7 @@
                         <input type="number" id="worksec" class="input" required min="0" max="59" value="0" aria-label="Work Time Seconds">
                     </div>
                     <div class="form-example">
+                        <!-- Section pour entrer le temps de pause -->
                         <label>Enter your break time:</label>
                         <br>
                         <label for="breakmin">Minutes:</label>
@@ -61,6 +71,7 @@
                         <input type="number" id="breaksec" class="input" required min="0" max="59" value="0" aria-label="Break Time Seconds">
                     </div>
                     <div class="submit">
+                        <!-- Bouton pour sauvegarder les paramètres -->
                         <button type="submit" aria-label="Save Settings"><em class="fa-solid fa-check"></em></button>
                     </div>
                 </form>

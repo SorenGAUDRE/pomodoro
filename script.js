@@ -2,15 +2,15 @@ let timer;
 let isPaused = true;
 let isWork = true;
 let isBreak = false;
-let workTime = 0.05; // Default work session duration (25 minutes)
-let breakTime = 5;  // Default break session duration (5 minutes)
-let timeLeft = workTime * 60  ; // Work session time in seconds
-let initialTimeLeft = timeLeft; // Store initial time for progress calculations
+let workTime = 25; // Durée de la session de travail par défaut (25 minutes)
+let breakTime = 5;  // Durée de la session de pause par défaut (5 minutes)
+let timeLeft = workTime * 60  ; // Temps de la session de travail en secondes
+let initialTimeLeft = timeLeft; // Stocker le temps initial pour les calculs de progression
 
-// DOM element references
-const progressCircle = document.getElementById('progress-circle'); // Circular progress bar
-const circleCircumference = 2 * Math.PI*35; // Circumference of the circle (with radius 45)
-const timerDisplay = document.getElementById('time'); // Time display element
+// Références aux éléments DOM
+const progressCircle = document.getElementById('progress-circle'); // Barre de progression circulaire
+const circleCircumference = 2 * Math.PI*35; // Circonférence du cercle (rayon de 45)
+const timerDisplay = document.getElementById('time'); // Élément d'affichage du temps
 if (localStorage.getItem("monTemps") != null){
     workTime = localStorage.getItem("monTemps");
     timeLeft = workTime * 60 
@@ -20,54 +20,54 @@ if (localStorage.getItem("monTempsPause") != null){
     breakTime = localStorage.getItem("monTempsPause");
 }
 displayTime(timeLeft)
-const startButton = document.getElementById('start'); // Start button
-const pauseButton = document.getElementById('pause'); // Pause button
-const resetButton = document.getElementById('reset'); // Reset button
-var work = document.getElementById('work'); // Work label element
-var breaks = document.getElementById('break'); // Break label element
-// Initial styling for work session label
+const startButton = document.getElementById('start'); // Bouton Démarrer
+const pauseButton = document.getElementById('pause'); // Bouton Pause
+const resetButton = document.getElementById('reset'); // Bouton Réinitialiser
+var work = document.getElementById('work'); // Élément étiquette Travail
+var breaks = document.getElementById('break'); // Élément étiquette Pause
+// Style initial pour l'étiquette de la session de travail
 work.style.color="#f1f392"
 breaks.style.color="white"
 
 
-// Set initial progress bar values
+// Définir les valeurs initiales de la barre de progression
 progressCircle.style.strokeDasharray = circleCircumference;
 progressCircle.style.strokeDashoffset = circleCircumference;
 
-// Function to update the progress circle based on time left
+// Fonction pour mettre à jour le cercle de progression en fonction du temps restant
 function updateProgress() {
-    const progressPercentage = (timeLeft / initialTimeLeft); // Calculate progress
-    const dashoffset = circleCircumference * progressPercentage; // Set the stroke offset
-    progressCircle.style.strokeDashoffset = dashoffset; // Update progress bar
+    const progressPercentage = (timeLeft / initialTimeLeft); // Calculer la progression
+    const dashoffset = circleCircumference * progressPercentage; // Définir l'offset du tracé
+    progressCircle.style.strokeDashoffset = dashoffset; // Mettre à jour la barre de progression
 }
 
-// Function to start the timer
+// Fonction pour démarrer le minuteur
 function startTimer() {
     if (isPaused) {
         if (timeLeft > 0) {
-            isPaused = false; // Unpause the timer
-            intervalId = setInterval(() => { // Start counting down // Display the current time
-                updateProgress(); // Update progress bar
-                displayTime(timeLeft);
-                timeLeft--; // Decrease time by 1 second
+            isPaused = false; // Reprendre le minuteur
+            intervalId = setInterval(() => { // Commencer le compte à rebours
+                updateProgress(); // Mettre à jour la barre de progression
+                displayTime(timeLeft); // Afficher le temps restant
+                timeLeft--; // Diminuer le temps de 1 seconde
                 
-                // If work session ends, switch to break session
+                // Si la session de travail se termine, passer à la session de pause
                 if (timeLeft < -1 && isWork == true) {
-                    progressCircle.style.strokeDasharray = circleCircumference; // Reset progress
+                    progressCircle.style.strokeDasharray = circleCircumference; // Réinitialiser la progression
                     progressCircle.style.strokeDashoffset = circleCircumference;
-                    timeLeft = breakTime * 60 ; // Set break time in seconds
+                    timeLeft = breakTime * 60 ; // Définir le temps de pause en secondes
                     initialTimeLeft = timeLeft;
-                    isWork = false; // Toggle session state
+                    isWork = false; // Basculer l'état de la session
                     isBreak = true;
                     breaks.style.color="#f1f392"
                     work.style.color="white"
                     displayTime(timeLeft);
                 }
-                // If break session ends, switch back to work session
+                // Si la session de pause se termine, repasser à la session de travail
                 else if (timeLeft < -1 && isBreak == true) {
-                    progressCircle.style.strokeDasharray = circleCircumference; // Reset progress
+                    progressCircle.style.strokeDasharray = circleCircumference; // Réinitialiser la progression
                     progressCircle.style.strokeDashoffset = circleCircumference;
-                    timeLeft = workTime * 60; // Set work time in seconds
+                    timeLeft = workTime * 60; // Définir le temps de travail en secondes
                     initialTimeLeft = timeLeft;
                     isWork = true;
                     isBreak = false;
@@ -75,41 +75,41 @@ function startTimer() {
                     breaks.style.color="white"
                     displayTime(timeLeft);
                 }
-            }, 1000); // Update every second
+            }, 1000); // Mettre à jour toutes les secondes
         }
     } else {
-        alert('The timer is already running'); // Warn the user if they try to start an already running timer
+        alert('Le minuteur est déjà en cours'); // Avertir l'utilisateur si le minuteur est déjà démarré
     }
 }
 
-// Function to display the time in minutes and seconds
+// Fonction pour afficher le temps en minutes et secondes
 function displayTime(timeLeft) {
-    let minutes = parseInt(timeLeft / 60, 10); // Convert seconds to minutes
-    let seconds = parseInt(timeLeft % 60, 10); // Remaining seconds
-    minutes = minutes < 10 ? "0" + minutes : minutes; // Add leading zero if needed
-    seconds = seconds < 10 ? "0" + seconds : seconds; // Add leading zero if needed
-    timerDisplay.innerText = minutes + ":" + seconds; // Update the time display
+    let minutes = parseInt(timeLeft / 60, 10); // Convertir les secondes en minutes
+    let seconds = parseInt(timeLeft % 60, 10); // Secondes restantes
+    minutes = minutes < 10 ? "0" + minutes : minutes; // Ajouter un zéro si nécessaire
+    seconds = seconds < 10 ? "0" + seconds : seconds; // Ajouter un zéro si nécessaire
+    timerDisplay.innerText = minutes + ":" + seconds; // Mettre à jour l'affichage du temps
 }
 
-// Function to stop the timer
+// Fonction pour arrêter le minuteur
 function stopTimer() {
-    clearInterval(intervalId); // Clear the interval to stop the timer
+    clearInterval(intervalId); // Effacer l'intervalle pour arrêter le minuteur
 }
 
-// Function to pause or resume the timer
+// Fonction pour mettre en pause ou reprendre le minuteur
 function pauseTimer() {
     if (isPaused) {
-        stopTimer(); // If paused, stop the timer
-        startTimer(); // Restart the timer
+        stopTimer(); // Si en pause, arrêter le minuteur
+        startTimer(); // Redémarrer le minuteur
     } else {
-        stopTimer(); // If running, stop the timer
-        isPaused = true; // Set the timer to paused state
+        stopTimer(); // Si en cours d'exécution, arrêter le minuteur
+        isPaused = true; // Mettre le minuteur en pause
     }
 }
 
-// Function to reset the timer
+// Fonction pour réinitialiser le minuteur
 function resetTimer() {
-    stopTimer(); // Stop the timer
+    stopTimer(); // Arrêter le minuteur
     console.log(workTime)
     if (localStorage.getItem("monTemps") != null){
         workTime = localStorage.getItem("monTemps");
@@ -117,22 +117,22 @@ function resetTimer() {
     if (localStorage.getItem("monTempsPause") != null){
         breakTime = localStorage.getItem("monTempsPause");
     }
-    timeLeft = (60 * workTime) ; // Reset time to the default work time
-    initialTimeLeft = timeLeft; // Update initial time
-    isPaused = true; // Pause the timer
+    timeLeft = (60 * workTime) ; // Réinitialiser le temps à la durée de travail par défaut
+    initialTimeLeft = timeLeft; // Mettre à jour le temps initial
+    isPaused = true; // Mettre en pause le minuteur
     isWork = true; 
     isBreak = false; 
     work.style.color="#f1f392"
     breaks.style.color="white"
-    displayTime(timeLeft); // Reset the displayed time
-    progressCircle.style.strokeDasharray = circleCircumference; // Reset progress bar
+    displayTime(timeLeft); // Réinitialiser l'affichage du temps
+    progressCircle.style.strokeDasharray = circleCircumference; // Réinitialiser la barre de progression
     progressCircle.style.strokeDashoffset = circleCircumference;
 }
 
-// Event listeners for the buttons
-startButton.addEventListener('click', startTimer); // Start button
-pauseButton.addEventListener('click', pauseTimer); // Pause button
-resetButton.addEventListener('click', resetTimer); // Reset button
+// Écouteurs d'événements pour les boutons
+startButton.addEventListener('click', startTimer); // Bouton Démarrer
+pauseButton.addEventListener('click', pauseTimer); // Bouton Pause
+resetButton.addEventListener('click', resetTimer); // Bouton Réinitialiser
 
 let modal = document.getElementById("myModal");
 let btn = document.getElementById("setting");

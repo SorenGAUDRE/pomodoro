@@ -120,6 +120,8 @@ function resetTimer() {
     timeLeft = (60 * workTime) ; // Reset time to the default work time
     initialTimeLeft = timeLeft; // Update initial time
     isPaused = true; // Pause the timer
+    isWork = true; 
+    isBreak = false; 
     work.style.color="#f1f392"
     breaks.style.color="white"
     displayTime(timeLeft); // Reset the displayed time
@@ -161,7 +163,6 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     let worksec= document.getElementById('worksec').value;
     let breakmin= document.getElementById('breakmin').value;
     let breaksec= document.getElementById('breaksec').value;
-    //console.log(workmin)
     workTime=parseInt(workmin) + (parseInt(worksec)/60)
     localStorage.setItem('monTemps', workTime)
     breakTime=parseInt(breakmin) + (parseInt(breaksec)/60)
